@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'dashboard#index'
+  root to: 'dashboard#home'
   get '/list_companies', to: 'list_companies#list_companies'
   post '/list_companies', to: 'list_companies#list_companies'
   get '/history', to: 'issues#history'

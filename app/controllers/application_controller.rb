@@ -14,10 +14,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = exception.message
-    render template: 'errors/not_found', layout: false, status: 404
-  end
+#  rescue_from ActiveRecord::RecordNotFound do |exception|
+ #   binding.pry
+  #  flash[:error] = exception.message
+   # render template: 'errors/not_found', layout: false, status: 404
+ # end
 
   def set_tenant_id
     Company.current_company_id = current_company&.id

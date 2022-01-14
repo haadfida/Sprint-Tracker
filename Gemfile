@@ -8,7 +8,9 @@ ruby '2.7.1'
 gem 'ajax-datatables-rails', '=1.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem "pry-rails"
 # Use mysql as the database for Active Record
+gem 'sassc', '~> 2.1.0'
 gem 'mysql2', '~> 0.5'
 # Use devise for authentication
 gem 'devise', '=4.8.0'

@@ -12,12 +12,6 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  variables:
-    sql_mode: TRADITIONAL
-  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -52,9 +46,7 @@ test:
 #
 production:
   <<: *default
-  database: Sprint_Tracker_production
-  username: Sprint_Tracker
-  password: <%= ENV['SPRINT_TRACKER_DATABASE_PASSWORD'] %>
-
-
-
+  database: <%= ENV['RDS_DATABASE'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOST'] %>
