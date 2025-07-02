@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  searchkick word_middle: %i[name email], filterable: %i[company_id]
+  # searchkick word_middle: %i[name email], filterable: %i[company_id]
 
   sequenceid :company, :users
   devise :database_authenticatable, :registerable,
@@ -73,6 +73,26 @@ class User < ApplicationRecord
 
   def will_save_change_to_email?
     false
+  end
+
+  # Devise authentication without tenant scope so users can sign in before tenant is set.
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if (email = conditions.delete(:email))
+      unscoped.where('LOWER(email) = ?', email.downcase).first
+    else
+      super
+    end
+  end
+
+  # Devise deserialisation without multitenant default_scope
+  def self.serialize_from_session(key, salt)
+    # `key` can be a scalar id or an array returned from `to_key`.
+    id = key.is_a?(Array) ? key.first : key
+    record = unscoped.find_by(id: id)
+    return unless record
+
+    record if record.authenticatable_salt == salt
   end
 
   private

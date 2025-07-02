@@ -60,6 +60,20 @@ ActiveRecord::Schema.define(version: 2021_09_27_075550) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "documents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "file_file_name", null: false
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
+    t.string "attachable_type", null: false
+    t.bigint "attachable_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_documents_on_attachable"
+    t.index ["company_id"], name: "index_documents_on_company_id"
+  end
+
   create_table "issues", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false

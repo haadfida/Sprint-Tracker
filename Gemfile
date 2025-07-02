@@ -1,25 +1,27 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.1.4'
 
 # add internalization
 # wrapper on datatables for server side processing
 gem 'ajax-datatables-rails', '=1.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-gem "pry-rails"
+gem 'rails', '~> 6.1.7'
 # Use mysql as the database for Active Record
 gem 'sassc', '~> 2.1.0'
-gem 'mysql2', '~> 0.5'
+gem 'mysql2', '~> 0.5.4'
 # Use devise for authentication
 gem 'devise', '=4.8.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '=5.4.2'
+# Use Sprockets for JavaScript bundling
+# gem 'webpacker', '=5.4.2'
+gem 'jquery-rails'
+gem 'jquery-datatables-rails'
+gem 'bootstrap', '~> 5.1'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -47,6 +49,9 @@ gem 'breadcrumbs_on_rails', '=4.1.0'
 # gem to add documents
 gem 'paperclip', '~> 6.0.0'
 
+# Allow Cross-Origin requests from React dev server during development
+gem 'rack-cors', '~> 2.0', require: 'rack/cors'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -72,3 +77,6 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
 end
+
+# Pin concurrent-ruby to 1.3.4 to avoid logger dependency issue with Rails 6.1
+gem 'concurrent-ruby', '1.3.4'
