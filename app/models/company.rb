@@ -2,14 +2,13 @@ class Company < ApplicationRecord
   not_multitenant
 
   has_many :users, dependent: :destroy
-  validates :subdomain, uniqueness: true
+  validates :subdomain, uniqueness: true, allow_blank: true
   belongs_to :owner, class_name: "User", optional: true
   has_many :issues, dependent: :destroy
   has_many :projects
   has_many :sprints
   validates :name, uniqueness: true
-  validates :subdomain, uniqueness: true
-  validates_format_of :subdomain, with: /\A([a-z0-9])*+\z/i
+  validates_format_of :subdomain, with: /\A([a-z0-9]*)\z/i, allow_blank: true
 
   def self.current_company_id=(id)
     Thread.current[:company_id] = id

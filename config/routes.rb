@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'dashboard#home'
+  get '/react_test', to: 'react_test#index'
   get '/list_companies', to: 'list_companies#list_companies'
   post '/list_companies', to: 'list_companies#list_companies'
   get '/history', to: 'issues#history'
@@ -7,6 +8,16 @@ Rails.application.routes.draw do
   get '/500', to: 'errors#internal_server'
   get '/401', to: 'errors#access_denied'
   get '/422', to: 'errors#unprocessable'
+
+  # API endpoints for React frontend
+  get '/api/me', to: 'api#me'
+  get '/api/current_user', to: 'api#me'
+
+  namespace :api do
+    resources :projects, except: %i[new edit]
+    resources :issues, except: %i[new edit]
+    resources :sprints, except: %i[new edit]
+  end
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', confirmations: 'users/confirmations' }, path: 'accounts', path_names: { sign_up: 'new' }
 

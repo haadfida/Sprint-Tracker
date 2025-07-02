@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Issue < ApplicationRecord
-  searchkick word_middle: %i[titile description], filterable: %i[company_id]
+  # searchkick word_middle: %i[titile description], filterable: %i[company_id]
 
   include DateValidations
   include TimeProgressions

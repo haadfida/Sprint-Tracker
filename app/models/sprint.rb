@@ -1,5 +1,5 @@
 class Sprint < ApplicationRecord
-  searchkick word_middle: %i[name description], filterable: %i[company_id]
+  # searchkick word_middle: %i[name description], filterable: %i[company_id]
   include DateValidations
 
   belongs_to :company

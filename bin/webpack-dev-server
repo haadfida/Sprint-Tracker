@@ -9,6 +9,9 @@ ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
 
 require "bundler/setup"
 
+# Fix for logger gem conflict with Ruby's built-in Logger
+require 'logger'
+
 require "webpacker"
 require "webpacker/dev_server_runner"
 
