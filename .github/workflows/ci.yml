@@ -7,7 +7,7 @@ on:
 
 jobs:
   rails-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       mysql:
         image: mysql:8.0
@@ -35,7 +35,7 @@ jobs:
         run: bundle exec rails test
 
   react-build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: react-frontend
