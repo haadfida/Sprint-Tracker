@@ -34,20 +34,20 @@ $bg-breadcrumbs-color:  #caced1;
   padding: 1rem 1rem;
 }
 .bg-login-image {
-  background: url("1.jpg");
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
   background-position: center;
   background-size: cover;
   border-radius: .35rem;
 
 }
 .bg-register-image {
-  background: url("2.png");
+  background: linear-gradient(135deg, #fce7f3, #fbcfe8);
   background-position: center;
   background-size: initial;
   border-radius: .35rem
 }
 .bg-member-image {
-  background: url("3.jpg");
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
